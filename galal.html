@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>will you say yes ? 🥹</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: pink; /* Pink background */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #d32f2f;
+    }
+    img {
+      width: 150px;
+      height: auto;
+      margin: 20px 0;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #yes {
+      background-color: #4caf50; /* Green for Yes */
+      color: white;
+      transition: all 0.5s ease;
+    }
+    #no {
+      background-color: #d32f2f; /* Red for No */
+      color: white;
+      transition: all 0.5s ease;
+    }
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 24px;
+      color: #d32f2f;
+    }
+    #gif-container {
+      display: none;
+      margin-top: 20px;
+    }
+    #gif-container img {
+      width: 200px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>will you say yes ? 🥹</h1>
+    <!-- Your image URL is here -->
+    <img src="https://i.imgur.com/CAthvm6.jpeg" alt="Cute Picture">
+    <div class="buttons">
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+    </div>
+    <div id="message">I love you ❤️❤️❤️</div>
+    <div id="gif-container">
+      <!-- Replace the src below with your GIF URL -->
+      <img src="https://media.tenor.com/Do2tfm6klgQAAAAM/cat-kitten.gif" alt="Love GIF">
+    </div>
+  </div>
+
+  <script>
+    const yesButton = document.getElementById('yes');
+    const noButton = document.getElementById('no');
+    const messageDiv = document.getElementById('message');
+    const gifContainer = document.getElementById('gif-container');
+    const container = document.querySelector('.container');
+    let clickCount = 0; // Track the number of times "No" is clicked
+    let yesSize = 16; // Initial font size for Yes button
+
+    noButton.addEventListener('click', () => {
+      if (clickCount < 4) { // Allow only 4 clicks
+        clickCount++;
+        if (clickCount === 1) {
+          noButton.textContent = 'Pls...';
+          yesSize += 5;
+          yesButton.style.fontSize = `${yesSize}px`;
+        } else if (clickCount === 2) {
+          noButton.textContent = 'You know I will be sad...';
+          yesSize += 5;
+          yesButton.style.fontSize = `${yesSize}px`;
+        } else if (clickCount === 3) {
+          noButton.textContent = 'I will get you a big chocolate!';
+          yesSize += 5;
+          yesButton.style.fontSize = `${yesSize}px`;
+        } else if (clickCount === 4) {
+          noButton.textContent = 'Fine, you win!';
+          yesSize += 10;
+          yesButton.style.fontSize = `${yesSize}px`;
+          yesButton.style.width = '100%';
+          yesButton.style.height = '100%';
+          yesButton.style.position = 'fixed';
+          yesButton.style.top = '0';
+          yesButton.style.left = '0';
+          yesButton.style.borderRadius = '0';
+          noButton.style.display = 'none'; // Hide the "No" button after 4 clicks
+        }
+      }
+    });
+
+    yesButton.addEventListener('click', () => {
+      // Hide buttons and question
+      yesButton.style.display = 'none';
+      noButton.style.display = 'none';
+      container.querySelector('h1').style.display = 'none';
+      container.querySelector('img').style.display = 'none';
+
+      // Show message and GIF
+      messageDiv.style.display = 'block';
+      gifContainer.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
